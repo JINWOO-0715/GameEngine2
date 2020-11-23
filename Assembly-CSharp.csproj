@@ -51,7 +51,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\Player.cs" />
-     <Compile Include="Assets\Script\item.cs" />
+     <Compile Include="Assets\Script\Item.cs" />
      <Compile Include="Assets\Script\Follow.cs" />
      <None Include="Assets\QuadAcion Pack\License.txt" />
  <Reference Include="Unity.Timeline.Editor">

@@ -1,18 +1,29 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public float speed;
+    public GameObject[] weapons;
+    public bool[] hasWeapons;
+    
     float hAxis;
     float vAxis;
+    
     bool wDown;
     bool jDown;
+    bool iDown;
+
+    bool sDown1;
+    bool sDown2;
+    bool sDown3;
+    
     bool isJump;
     bool isDodge;
-
+    
     Vector3 moveVec;
     // Start is called before the first frame update
     Vector3 dodgeVec;
@@ -20,6 +31,7 @@ public class Player : MonoBehaviour
     Rigidbody rigid;
     Animator anim;
 
+    GameObject nearObject;
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -34,7 +46,8 @@ public class Player : MonoBehaviour
         Turn();
         Jump();
         Dodge();
-
+        Interation();
+        Swap();
     }
 
     void GetInput()
@@ -43,6 +56,11 @@ public class Player : MonoBehaviour
         vAxis = Input.GetAxisRaw("Vertical");
         wDown = Input.GetButton("Walk");
         jDown = Input.GetButtonDown("Jump");
+        iDown = Input.GetButtonDown("Interation");
+        
+        sDown1 = Input.GetButtonDown("Swap1");
+        sDown2 = Input.GetButtonDown("Swap2");
+        sDown3 = Input.GetButtonDown("Swap3 ");
     }
 
     void Move()
@@ -99,6 +117,29 @@ public class Player : MonoBehaviour
         isDodge = false;
     }
 
+    void Swap()
+    {
+        if(sDown1)
+    }
+    void Interation()
+    {
+       // 점프중 무기 스왑 바꾸려면 isjimp랑 dodge바꾸기
+            if (iDown && nearObject != null && !isJump && !isDodge)
+            {
+                if (nearObject.tag == "Weapon")
+                {
+                    Item item = nearObject.GetComponent<Item>();
+                    int weaponIndex = item.value;
+                    hasWeapons[weaponIndex] = true;
+                    
+
+
+                    Destroy(nearObject);
+                }
+                
+            }
+       
+    }
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Floor"){
@@ -106,4 +147,21 @@ public class Player : MonoBehaviour
             isJump = false;
         }
     }
+
+     void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Weapon")
+        {
+            nearObject = other.gameObject;
+        }
+       
+    }
+     void OnTriggerExit(Collider other)
+     {
+         if (other.tag == "Weapon")
+         {
+             nearObject = null;
+         }
+       
+     }
 }
