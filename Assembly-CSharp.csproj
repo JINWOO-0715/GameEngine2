@@ -37,9 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\Player.cs" />
+     <Compile Include="Assets\Script\Orbit.cs" />
      <Compile Include="Assets\Script\Item.cs" />
      <Compile Include="Assets\Script\Follow.cs" />
-     <Compile Include="Assets\Script\Orbit.cs" />
+     <Compile Include="Assets\Script\Weapon.cs" />
      <None Include="Assets\QuadAcion Pack\License.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

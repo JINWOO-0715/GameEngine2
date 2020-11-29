@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     bool wDown;
     bool jDown;
     bool iDown;
+    bool fDown;
 
     bool sDown1;
     bool sDown2;
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
     bool isJump;
     bool isDodge;
     bool isSwap;
+    bool isFireReady = true;
     
     Vector3 moveVec;
     // Start is called before the first frame update
@@ -45,8 +47,10 @@ public class Player : MonoBehaviour
     Animator anim;
 
     GameObject nearObject;
-    GameObject equipWeapon;
-     int equipWeaponIndex =-1;
+    Weapon equipWeapon;
+    int equipWeaponIndex =-1;
+    float fireDelay;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -60,6 +64,7 @@ public class Player : MonoBehaviour
         Move();
         Turn();
         Jump();
+        Attack();
         Swap();
         Dodge();
         Interation();
@@ -73,6 +78,7 @@ public class Player : MonoBehaviour
         wDown = Input.GetButton("Walk");
         jDown = Input.GetButtonDown("Jump");
         iDown = Input.GetButtonDown("Interation");
+        fDown = Input.GetButtonDown("Fire1");
         
         sDown1 = Input.GetButtonDown("Swap1");
         sDown2 = Input.GetButtonDown("Swap2");
@@ -85,10 +91,15 @@ public class Player : MonoBehaviour
 
         if(isDodge)
             moveVec = dodgeVec;
+
         /*무기 바꿀때 움직이지 않게하기
         if (isSwap)
             moveVec = Vector3.zero;*/
         
+        // // 움직이는 중 근접공격 불가
+        if (!isFireReady)
+            moveVec = Vector3.zero;
+
         if (wDown)
         {
             transform.position += moveVec * speed * 0.3f * Time.deltaTime;
@@ -120,6 +131,22 @@ public class Player : MonoBehaviour
             isJump = true;
         }
     }
+
+    void Attack()
+    {
+        if(equipWeapon == null)
+            return;
+        
+        fireDelay += Time.deltaTime;
+        isFireReady = equipWeapon.rate < fireDelay;
+
+        if(fDown && isFireReady && !isDodge && !isSwap) {
+            equipWeapon.Use();
+            anim.SetTrigger("doSwing");
+            fireDelay = 0;
+        }
+    }
+
     void Dodge()
     {
         if(jDown && moveVec != Vector3.zero && !isJump && !isDodge) // &&!isSwap 점프도 안되게만들기
@@ -161,10 +188,10 @@ public class Player : MonoBehaviour
         if ((sDown1 || sDown2 || sDown3) && !isJump && !isDodge)
         {
             if(equipWeapon != null)
-                equipWeapon.SetActive(false);
+                equipWeapon.gameObject.SetActive(false);
             
-            equipWeapon = weapons[weaponIndex];
-            equipWeapon.SetActive(true);
+            equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
+            equipWeapon.gameObject.SetActive(true);
             
             anim.SetTrigger("doSwap");
             
