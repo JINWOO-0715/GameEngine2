@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     bool isSwap;
     bool isFireReady = true;
     bool isReload;
+    bool isBorder;
 
     Vector3 moveVec;
     // Start is called before the first frame update
@@ -108,17 +109,9 @@ public class Player : MonoBehaviour
         if(isReload)
             moveVec = Vector3.zero;
 
-        if (wDown)
-        {
-            transform.position += moveVec * speed * 0.3f * Time.deltaTime;
-            
-        }
-        else
-        {
-            transform.position += moveVec * speed *  Time.deltaTime;
-        }
-        
-        transform.position += moveVec * speed * Time.deltaTime;
+
+        if(!isBorder)
+            transform.position += moveVec * speed * (wDown ? 0.3f : 1f) * Time.deltaTime;
         
         anim.SetBool("isRun", moveVec !=Vector3.zero);
         anim.SetBool("isWalk", wDown);
@@ -268,6 +261,24 @@ public class Player : MonoBehaviour
             }
        
     }
+
+    void FreezeRotation()
+    {
+        rigid.angularVelocity = Vector3.zero;
+    }
+
+    void StopToWall()
+    {
+        Debug.DrawRay(transform.position, transform.forward * 5, Color.green);
+        isBorder = Physics.Raycast(transform.position, transform.forward, 5, LayerMask.GetMask("Wall"));
+    }
+    
+    void FixedUpdate()
+    {
+        FreezeRotation();
+        StopToWall();
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Floor"){
