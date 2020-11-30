@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public bool[] hasWeapons;
     public GameObject[] grenades;
     public int hasGrenades;
+    public GameObject grenadeObj;
     public Camera followCamera;
     
     
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour
     bool jDown;
     bool iDown;
     bool fDown;
+    bool gDown;
     bool rDwon;
 
     bool sDown1;
@@ -66,6 +68,7 @@ public class Player : MonoBehaviour
     {
         GetInput();
         Move();
+        Grenade();
         Turn();
         Jump();
         Attack();
@@ -84,6 +87,7 @@ public class Player : MonoBehaviour
         jDown = Input.GetButtonDown("Jump");
         iDown = Input.GetButtonDown("Interation");
         fDown = Input.GetButton("Fire1");
+        gDown = Input.GetButtonDown("Fire2");
         rDwon = Input.GetButtonDown("Reload");
         sDown1 = Input.GetButtonDown("Swap1");
         sDown2 = Input.GetButtonDown("Swap2");
@@ -123,10 +127,12 @@ public class Player : MonoBehaviour
         transform.LookAt(transform.position + moveVec);
 
         // 마우스에 의한 회전
-        if(fDown){
+        if(fDown)
+        {
             Ray ray = followCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit rayHit;
-            if(Physics.Raycast(ray, out rayHit, 100)) {
+            if(Physics.Raycast(ray, out rayHit, 100)) 
+            {
                 Vector3 nextVec = rayHit.point - transform.position;
                 nextVec.y = 0;
                 transform.LookAt(transform.position + nextVec);
@@ -134,6 +140,35 @@ public class Player : MonoBehaviour
         }
     }
 
+    void Grenade()
+    {
+        
+        if (hasGrenades == 0)
+        {
+            return;
+            
+        }
+
+        if (gDown && !isReload && !isSwap)
+        {
+            Ray ray = followCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit rayHit;
+            if (Physics.Raycast(ray, out rayHit, 100))
+            {
+                Vector3 nextVec = rayHit.point - transform.position;
+                nextVec.y = 0;
+
+                GameObject InstantGrenade = Instantiate(grenadeObj, transform.position, transform.rotation);
+                Rigidbody rigidGrenade = InstantGrenade.GetComponent<Rigidbody>();
+                rigidGrenade.AddForce(nextVec, ForceMode.Impulse);
+                rigidGrenade.AddTorque(Vector3.back * 10, ForceMode.Impulse);
+
+                hasGrenades--;
+                grenades[hasGrenades].SetActive(false);
+            }
+          
+        }
+    }
     void Jump()
     {
         if(jDown && moveVec == Vector3.zero && !isJump && !isDodge)// &&!isSwap 점프도 안되게만들기

@@ -13,6 +13,7 @@
           <e p="Bullet.cs" t="Include" />
           <e p="Enemy.cs" t="Include" />
           <e p="Follow.cs" t="Include" />
+          <e p="Grenade.cs" t="Include" />
           <e p="Item.cs" t="Include" />
           <e p="Orbit.cs" t="Include" />
           <e p="Player.cs" t="Include" />
