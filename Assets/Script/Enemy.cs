@@ -2,21 +2,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
     public int maxHealth;
     public int curHealth;
+    public Transform target;
+    
 
     Rigidbody rigid;
     BoxCollider boxCollider;
     Material mat;
+    NavMeshAgent nav;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
-        mat = GetComponent<MeshRenderer>().material;
+        mat = GetComponentInChildren<MeshRenderer>().material;
+        nav = GetComponent<NavMeshAgent>();
+    }
+
+    void Update()
+    {
+        nav.SetDestination(target.position);
     }
 
     void OnTriggerEnter(Collider other)
