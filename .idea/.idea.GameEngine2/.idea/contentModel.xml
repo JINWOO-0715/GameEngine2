@@ -10,9 +10,13 @@
           <e p="License.txt" t="Include" />
         </e>
         <e p="Script" t="Include">
+          <e p="Bullet.cs" t="Include" />
+          <e p="Enemy.cs" t="Include" />
           <e p="Follow.cs" t="Include" />
           <e p="Item.cs" t="Include" />
+          <e p="Orbit.cs" t="Include" />
           <e p="Player.cs" t="Include" />
+          <e p="Weapon.cs" t="Include" />
         </e>
       </e>
       <e p="GameEngine2.sln" t="IncludeFlat" />

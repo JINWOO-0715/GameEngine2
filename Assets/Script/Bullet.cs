@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,8 +12,16 @@ public class Bullet : MonoBehaviour
         if(collision.gameObject.tag == "Floor"){
             Destroy(gameObject, 3);
         }
-        else if(collision.gameObject.tag == "Wall"){
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Wall")
+        {
             Destroy(gameObject);
         }
     }
+
+
 }
