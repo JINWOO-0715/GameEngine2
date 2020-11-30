@@ -45,12 +45,14 @@ public class Player : MonoBehaviour
     bool isReload;
     bool isBorder;
 
+     bool isDamage;
     Vector3 moveVec;
     // Start is called before the first frame update
     Vector3 dodgeVec;
 
     Rigidbody rigid;
     Animator anim;
+    private MeshRenderer[] meshs;
 
     GameObject nearObject;
     Weapon equipWeapon;
@@ -61,6 +63,7 @@ public class Player : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
+        meshs = GetComponentsInChildren<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -351,6 +354,34 @@ public class Player : MonoBehaviour
                     break;
             }
             Destroy(other.gameObject);
+        }
+        else if (other.tag == "EnemyBullet")
+        {
+            
+            if (!isDamage)
+            {
+                Bullet enemyBullet = other.GetComponent<Bullet>();
+                health -= enemyBullet.damage;
+                StartCoroutine(OnDamage());
+            }
+          
+        }
+    }
+
+    IEnumerator OnDamage()
+    {
+        isDamage = true;
+
+        foreach (MeshRenderer mesh in meshs)
+        {
+            mesh.material.color =Color.yellow;
+        }
+        yield return new WaitForSeconds(1f);
+        
+        isDamage = false;
+        foreach (MeshRenderer mesh in meshs)
+        {
+            mesh.material.color =Color.white;
         }
     }
      void OnTriggerStay(Collider other)

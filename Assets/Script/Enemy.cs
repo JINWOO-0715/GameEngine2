@@ -36,9 +36,10 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
-        if (isChase)
+        if (nav.enabled)
         {
             nav.SetDestination(target.position);
+            nav.isStopped = !isChase;
         }
     }
     void FreezeVelocity()
