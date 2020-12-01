@@ -58,6 +58,7 @@
      <Compile Include="Assets\Script\Bullet.cs" />
      <Compile Include="Assets\Script\Follow.cs" />
      <Compile Include="Assets\Script\Enemy.cs" />
+     <Compile Include="Assets\Script\Missile.cs" />
      <None Include="Assets\QuadAcion Pack\License.txt" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/user/Desktop/새 폴더/GameEngine2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
