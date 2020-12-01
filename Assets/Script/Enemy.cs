@@ -13,32 +13,36 @@ public class Enemy : MonoBehaviour
     public GameObject bullet; 
     public bool isChase;
     public bool isAttack;
+    public bool isDead;
 
     public enum Type
     {
         A,
         B,
-        C
+        C,
+        D
     };
 
     public Type enemyType;
 
 
-    Rigidbody rigid;
-    BoxCollider boxCollider;
-    Material mat;
-    NavMeshAgent nav;
-    Animator anim;
+    public Rigidbody rigid;
+    public BoxCollider boxCollider;
+    public MeshRenderer[] meshs;
+    public NavMeshAgent nav;
+    public Animator anim;
     
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
-        mat = GetComponentInChildren<MeshRenderer>().material;
+        meshs = GetComponentsInChildren<MeshRenderer>();
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
         
-        Invoke("ChaseStart",2);
+        if(enemyType != Type.D)
+            Invoke("ChaseStart",2);
+        
     }
 
     void ChaseStart()
@@ -48,7 +52,7 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
-        if (nav.enabled)
+        if (nav.enabled && enemyType !=Type.D)
         {
             nav.SetDestination(target.position);
             nav.isStopped = !isChase;
@@ -66,38 +70,45 @@ public class Enemy : MonoBehaviour
 
     void Targeting()
     {
-        float targetRadius = 0; 
-        float targetRange = 0; // 공격 범위
 
-        switch (enemyType)
+        if ( !isDead &&enemyType != Type.D)
         {
-            case Type.A:
-                 targetRadius = 1.5f;
-                 targetRange = 3f;
-                 break;
-            case Type.B:
-                targetRadius = 1f;
-                targetRange = 12f;
-                break;
-            case Type.C:
-                 targetRadius = 0.5f; 
-                 targetRange = 25f; // 공격 범위
+            float targetRadius = 0; 
+            float targetRange = 0; // 공격 범위
 
-                break;;
+            switch (enemyType)
+            {
+                case Type.A:
+                    targetRadius = 1.5f;
+                    targetRange = 3f;
+                    break;
+                case Type.B:
+                    targetRadius = 1f;
+                    targetRange = 12f;
+                    break;
+                case Type.C:
+                    targetRadius = 0.5f; 
+                    targetRange = 25f; // 공격 범위
+
+                    break;;
+
+            }
+            RaycastHit[] rayHits = Physics.SphereCastAll(transform.position,
+                targetRadius,
+                transform.forward,
+                targetRange,
+                LayerMask.GetMask("Player"));
+
+            if (rayHits.Length > 0 && !isAttack)
+            {
+                StartCoroutine(Attack());
+            }
 
         }
-        
-        RaycastHit[] rayHits = Physics.SphereCastAll(transform.position,
-            targetRadius,
-            transform.forward,
-            targetRange,
-            LayerMask.GetMask("Player"));
 
-        if (rayHits.Length > 0 && !isAttack)
-        {
-            StartCoroutine(Attack());
-        }
+ 
         
+
 
     }
 
@@ -181,20 +192,25 @@ public class Enemy : MonoBehaviour
     }
     IEnumerator Ondamage(Vector3 reactVec , bool isGrenade)
     {
-        mat.color=Color.red;
+        foreach ( MeshRenderer mesh in meshs)
+             mesh.material.color =Color.red;
+   
         yield return new WaitForSeconds(0.1f);
 
         if (curHealth > 0)
         {
-            mat.color = Color.white;
+            foreach (MeshRenderer mesh in meshs)
+                mesh.material.color = Color.white;
         }
         else // 사망시 액션
         {
-            mat.color=Color.gray;
+            foreach (MeshRenderer mesh in meshs)
+                mesh.material.color = Color.gray;
             gameObject.layer = 14;
-            anim.SetTrigger("doDie");
+            isDead = true;
             isChase = false;
             nav.enabled = false;
+            anim.SetTrigger("doDie");
             
             if (isGrenade)
             {
@@ -216,8 +232,8 @@ public class Enemy : MonoBehaviour
                 rigid.AddForce(reactVec*5,ForceMode.Impulse);
             }
     
-            
-            Destroy(gameObject, 4);
+            if(enemyType != Type.D) // 보스아니면 모두 제거 보스 추가시 이걸 제거하시오
+                Destroy(gameObject, 4);
         }
     }
 }

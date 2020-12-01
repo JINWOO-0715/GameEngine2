@@ -10,6 +10,9 @@
           <e p="License.txt" t="Include" />
         </e>
         <e p="Script" t="Include">
+          <e p="Boss.cs" t="Include" />
+          <e p="BossMissile.cs" t="Include" />
+          <e p="BossRock.cs" t="Include" />
           <e p="Bullet.cs" t="Include" />
           <e p="Enemy.cs" t="Include" />
           <e p="Follow.cs" t="Include" />

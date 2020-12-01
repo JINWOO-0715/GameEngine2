@@ -24,18 +24,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GameEngine2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameEngine2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene/NavMesh.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene/NavMesh.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Bullet.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Enemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ArtifactDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/17/174781b8f546a40e98c0c702aaa790be" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/2d/2d0f9817f55a504d55c5d41d76e54705" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/6e/6e0722f786a9910d5fd4cc76ccdb9202" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/73/73d1bcade2a17d8667d24451a21cf23d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/74/745a9df169f72db73cacf05ae4b7df58" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/9e/9ebee5c9f40dce323b140014f0b15bc8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/e2/e244d702959ca0bf9aaf595d80aed0e0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/fb/fbb4196489add59492db97f9329760f0" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
@@ -43,8 +36,6 @@
       <change beforePath="$PROJECT_DIR$/Library/SourceAssetDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SourceAssetDB" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/MainStageHierarchy/4d/4d2a36d9faf65734f0bbefb3ee623532.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/MainStageHierarchy/4d/4d2a36d9faf65734f0bbefb3ee623532.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/8c/8cd7c613bf844de3b80696e27a479d5e.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/8c/8cd7c613bf844de3b80696e27a479d5e.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +46,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Script/BossRock.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Follow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Boss.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Grenade.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/BossMissile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Missile.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -68,8 +62,11 @@
         <option value="$PROJECT_DIR$/Assets/Script/Grenade.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/Missile.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/Boss.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/BossMissile.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/Bullet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/BossRock.cs" />
       </list>
     </option>
   </component>
@@ -130,7 +127,7 @@
       <workItem from="1606716101571" duration="777000" />
       <workItem from="1606717433658" duration="4197000" />
       <workItem from="1606722779732" duration="3614000" />
-      <workItem from="1606789382037" duration="6201000" />
+      <workItem from="1606789382037" duration="18526000" />
     </task>
     <servers />
   </component>
@@ -163,17 +160,21 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="274" y="169" key="SettingsEditor/0.0.2560.1040@0.0.2560.1040" timestamp="1605576833269" />
-    <state x="120" y="110" width="828" height="840" key="VCS.FileHistoryDialog" timestamp="1606725085412">
+    <state x="120" y="110" width="828" height="840" key="VCS.FileHistoryDialog" timestamp="1606809653464">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="120" y="110" width="828" height="840" key="VCS.FileHistoryDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1606725085412" />
+    <state x="120" y="110" width="828" height="840" key="VCS.FileHistoryDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1606809653464" />
+    <state x="1327" y="107" width="1019" height="1019" key="dock-window-1" timestamp="1606813681225">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1327" y="107" width="1019" height="1019" key="dock-window-1/0.0.2560.1040@0.0.2560.1040" timestamp="1606813681225" />
     <state x="1537" y="244" key="run.anything.popup" timestamp="1606792119357">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1537" y="244" key="run.anything.popup/0.0.2560.1040@0.0.2560.1040" timestamp="1606792119357" />
-    <state x="321" y="233" key="search.everywhere.popup" timestamp="1605577965151">
+    <state x="321" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1606812623559">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="321" y="233" key="search.everywhere.popup/0.0.2560.1040@0.0.2560.1040" timestamp="1605577965151" />
+    <state x="321" y="233" width="672" height="678" key="search.everywhere.popup/0.0.2560.1040@0.0.2560.1040" timestamp="1606812623559" />
   </component>
 </project>
