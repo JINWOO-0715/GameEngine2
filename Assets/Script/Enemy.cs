@@ -172,6 +172,7 @@ public class Enemy : MonoBehaviour
             curHealth -= weapon.damage;
             Vector3 reactVec = transform.position - other.transform.position;
             StartCoroutine(Ondamage(reactVec ,false));
+          
 
         }
         else if (other.tag == "Bullet")// 맞은게 총알
