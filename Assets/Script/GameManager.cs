@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         if(player.score > maxScore)
         {
             BestText.gameObject.SetActive(true);
-            PlayerPrefs.GetInt("player.score");
+            PlayerPrefs.SetInt("MaxScore", player.score);
         }
     }
 

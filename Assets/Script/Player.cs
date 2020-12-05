@@ -120,11 +120,11 @@ public class Player : MonoBehaviour
             moveVec = Vector3.zero;
 
         // 움직이는 동안 리로드 불가
-        if(isReload && !isDead)
+        if(isReload)
             moveVec = Vector3.zero;
 
 
-        if(!isBorder)
+        if(!isBorder && !isDead)
             transform.position += moveVec * speed * (wDown ? 0.3f : 1f) * Time.deltaTime;
         
         anim.SetBool("isRun", moveVec !=Vector3.zero);
@@ -134,7 +134,8 @@ public class Player : MonoBehaviour
     void Turn()
     {
         // 키보드에 의한 회전
-        transform.LookAt(transform.position + moveVec);
+        if(!isDead)
+            transform.LookAt(transform.position + moveVec);
 
         // 마우스에 의한 회전
         if(fDown && !isDead)
@@ -290,7 +291,7 @@ public class Player : MonoBehaviour
     void Interation()
     {
        // 점프중 무기 스왑 바꾸려면 isjimp랑 dodge바꾸기
-            if (iDown && nearObject != null && !isJump && !isDodge)
+            if (iDown && nearObject != null && !isJump && !isDodge && !isDead)
             {
                 if (nearObject.tag == "Weapon")
                 {

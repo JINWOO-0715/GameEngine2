@@ -7173,7 +7173,7 @@ GameObject:
   - component: {fileID: 534860400}
   - component: {fileID: 534860404}
   m_Layer: 12
-  m_Name: Wall (3)
+  m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7460,7 +7460,7 @@ GameObject:
   - component: {fileID: 573402246}
   - component: {fileID: 573402250}
   m_Layer: 12
-  m_Name: Wall (1)
+  m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20338,8 +20338,8 @@ MonoBehaviour:
   enemyCTxt: {fileID: 932500508}
   bossHealthGroup: {fileID: 90249646}
   bossHealthBar: {fileID: 1405148313}
-  curScoreText: {fileID: 0}
-  BestText: {fileID: 0}
+  curScoreText: {fileID: 880872093}
+  BestText: {fileID: 1994975416}
 --- !u!4 &1021913645
 Transform:
   m_ObjectHideFlags: 0
@@ -54689,9 +54689,9 @@ MonoBehaviour:
   grenadeObj: {fileID: 4791376606939491147, guid: ce61287c961c3504b80bcc1d1816f620, type: 3}
   followCamera: {fileID: 963194227}
   manager: {fileID: 1021913644}
-  ammo: 0
+  ammo: 999
   coin: 6000
-  health: 10
+  health: 50
   score: 0
   maxAmmo: 999
   maxCoin: 99999
@@ -54747,7 +54747,7 @@ GameObject:
   - component: {fileID: 1909714216}
   - component: {fileID: 1909714220}
   m_Layer: 12
-  m_Name: Wall (2)
+  m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
