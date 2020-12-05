@@ -8,9 +8,12 @@ public class Enemy : MonoBehaviour
 {
     public int maxHealth;
     public int curHealth;
+    public int score;
+    public GameManager manager;
     public Transform target;
     public BoxCollider meleeArea;
     public GameObject bullet; 
+    public GameObject[] coins;
     public bool isChase;
     public bool isAttack;
     public bool isDead;
@@ -212,6 +215,27 @@ public class Enemy : MonoBehaviour
             isChase = false;
             nav.enabled = false;
             anim.SetTrigger("doDie");
+            Player player = target.GetComponent<Player>();
+            player.score += score;
+            int ranCoin = UnityEngine.Random.Range(0, 3);
+            Instantiate(coins[ranCoin], transform.position, Quaternion.identity);
+
+            switch(enemyType)
+            {
+                case Type.A:
+                    manager.enemyCntA--;
+                    break;
+                case Type.B:
+                    manager.enemyCntB--;
+                    break;
+                case Type.C:
+                    manager.enemyCntC--;
+                    break;
+                case Type.D:
+                    manager.enemyCntD--;
+                    break;
+            }
+
             
             if (isGrenade)
             {
@@ -233,8 +257,9 @@ public class Enemy : MonoBehaviour
                 rigid.AddForce(reactVec*5,ForceMode.Impulse);
             }
     
-            if(enemyType != Type.D) // 보스아니면 모두 제거 보스 추가시 이걸 제거하시오
-                Destroy(gameObject, 4);
+            // if(enemyType != Type.D) // 보스아니면 모두 제거 보스 추가시 이걸 제거하시오
+                 
+            Destroy(gameObject, 4);
         }
     }
 }

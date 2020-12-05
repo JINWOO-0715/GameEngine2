@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public int hasGrenades;
     public GameObject grenadeObj;
     public Camera followCamera;
+    public GameManager manager;
     
     
     public int ammo;
@@ -46,6 +47,7 @@ public class Player : MonoBehaviour
     bool isReload;
     bool isBorder;
     bool isShop;
+    bool isDead;
 
      bool isDamage;
     Vector3 moveVec;
@@ -118,7 +120,7 @@ public class Player : MonoBehaviour
             moveVec = Vector3.zero;
 
         // 움직이는 동안 리로드 불가
-        if(isReload)
+        if(isReload && !isDead)
             moveVec = Vector3.zero;
 
 
@@ -135,7 +137,7 @@ public class Player : MonoBehaviour
         transform.LookAt(transform.position + moveVec);
 
         // 마우스에 의한 회전
-        if(fDown)
+        if(fDown && !isDead)
         {
             Ray ray = followCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit rayHit;
@@ -157,7 +159,7 @@ public class Player : MonoBehaviour
             
         }
 
-        if (gDown && !isReload && !isSwap && !isShop)
+        if (gDown && !isReload && !isSwap && !isShop && !isDead)
         {
             Ray ray = followCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit rayHit;
@@ -179,7 +181,7 @@ public class Player : MonoBehaviour
     }
     void Jump()
     {
-        if(jDown && moveVec == Vector3.zero && !isJump && !isDodge && !isShop)// &&!isSwap 점프도 안되게만들기
+        if(jDown && moveVec == Vector3.zero && !isJump && !isDodge && !isShop && !isDead)// &&!isSwap 점프도 안되게만들기
         {
             rigid.AddForce(Vector3.up * 15, ForceMode.Impulse);
             anim.SetBool("isJump", true);
@@ -196,7 +198,7 @@ public class Player : MonoBehaviour
         fireDelay += Time.deltaTime;
         isFireReady = equipWeapon.rate < fireDelay;
 
-        if(fDown && isFireReady && !isDodge && !isSwap && !isReload && !isShop) {
+        if(fDown && isFireReady && !isDodge && !isSwap && !isReload && !isShop&& !isDead) {
             equipWeapon.Use();
             anim.SetTrigger(equipWeapon.type == Weapon.Type.Melee ? "doSwing" : "doShot");
             fireDelay = 0;
@@ -214,7 +216,7 @@ public class Player : MonoBehaviour
         if(ammo == 0)
             return;
         
-        if(rDwon && !isJump && !isDodge && !isSwap && isFireReady && !isShop) {
+        if(rDwon && !isJump && !isDodge && !isSwap && isFireReady && !isShop&& !isDead) {
             anim.SetTrigger("doReload");
             isReload = true;
 
@@ -232,7 +234,7 @@ public class Player : MonoBehaviour
 
     void Dodge()
     {
-        if(jDown && moveVec != Vector3.zero && !isJump && !isDodge && !isShop) // &&!isSwap 점프도 안되게만들기
+        if(jDown && moveVec != Vector3.zero && !isJump && !isDodge && !isShop&& !isDead) // &&!isSwap 점프도 안되게만들기
         {
             dodgeVec = moveVec;
             speed *= 2;
@@ -268,7 +270,7 @@ public class Player : MonoBehaviour
         if (sDown2) weaponIndex = 1;
         if (sDown3) weaponIndex = 2;
         // 점프중이나 회피중일때 바꿀꺼면 isJump isDodge 없애기
-        if ((sDown1 || sDown2 || sDown3) && !isJump && !isDodge && !isShop)
+        if ((sDown1 || sDown2 || sDown3) && !isJump && !isDodge && !isShop&& !isDead)
         {
             if(equipWeapon != null)
                 equipWeapon.gameObject.SetActive(false);
@@ -391,6 +393,10 @@ public class Player : MonoBehaviour
         }
         if(isBossAtk)
             rigid.AddForce(transform.forward * -25,ForceMode.Impulse);
+
+        if(health <= 0 && !isDead )
+            OnDie();
+            
         yield return new WaitForSeconds(1f);
         
         isDamage = false;
@@ -401,7 +407,18 @@ public class Player : MonoBehaviour
 
         if (isBossAtk)
             rigid.velocity = Vector3.zero;
+
+
+
     }
+
+    void OnDie()
+    {
+        anim.SetTrigger("doDie");
+        isDead = true;
+        manager.GameOver();
+    }
+
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Weapon" || other.tag == "Shop")
