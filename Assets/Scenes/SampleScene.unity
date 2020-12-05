@@ -20880,7 +20880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   damage: 25
-  rate: 0.4
+  rate: 0.8
   maxAmmo: 0
   curAmmo: 0
   meleeArea: {fileID: 1182432098}
@@ -54691,7 +54691,7 @@ MonoBehaviour:
   manager: {fileID: 1021913644}
   ammo: 999
   coin: 6000
-  health: 50
+  health: 9999
   score: 0
   maxAmmo: 999
   maxCoin: 99999

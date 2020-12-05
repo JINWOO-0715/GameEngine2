@@ -91,7 +91,6 @@ public class Enemy : MonoBehaviour
                 case Type.C:
                     targetRadius = 0.5f; 
                     targetRange = 25f; // 공격 범위
-
                     break;;
 
             }
@@ -153,7 +152,8 @@ public class Enemy : MonoBehaviour
         isChase = true;
         isAttack = false;
         anim.SetBool("isAttack",false);
-
+        if(meleeArea.enabled)
+            meleeArea.enabled = false;
     }
     void FixedUpdate()
     {
@@ -164,7 +164,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Melee") // 맞은게 망치
+        if (other.tag == "Melee" && curHealth > 0) // 맞은게 망치
         {
             Weapon weapon = other.GetComponent<Weapon>();
             curHealth -= weapon.damage;
