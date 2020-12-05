@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &8904715003985977742
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2838552335761125289}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ac53265faf3bb40418a826709687d55a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6162758578997664183
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,9 +117,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b64bca816049d4c81cbfe00e150069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
-  curHealth: 200
+  maxHealth: 150
+  curHealth: 150
   score: 300
+  manager: {fileID: 0}
   target: {fileID: 0}
   meleeArea: {fileID: 0}
   bullet: {fileID: 12930411118316363, guid: 7f87d916133f37d46a9985451641967f, type: 3}
@@ -117,25 +137,6 @@ MonoBehaviour:
   meshs: []
   nav: {fileID: 0}
   anim: {fileID: 0}
---- !u!95 &8904715003985977742
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2838552335761125289}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ac53265faf3bb40418a826709687d55a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3145194374026531576
 PrefabInstance:
   m_ObjectHideFlags: 0

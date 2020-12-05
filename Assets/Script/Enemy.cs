@@ -28,7 +28,6 @@ public class Enemy : MonoBehaviour
 
     public Type enemyType;
 
-
     public Rigidbody rigid;
     public BoxCollider boxCollider;
     public MeshRenderer[] meshs;
@@ -74,7 +73,7 @@ public class Enemy : MonoBehaviour
     void Targeting()
     {
 
-        if ( !isDead &&enemyType != Type.D)
+        if ( !isDead && enemyType != Type.D)
         {
             float targetRadius = 0; 
             float targetRange = 0; // 공격 범위
@@ -108,10 +107,6 @@ public class Enemy : MonoBehaviour
             }
 
         }
-
- 
-        
-
 
     }
 
@@ -178,7 +173,7 @@ public class Enemy : MonoBehaviour
           
 
         }
-        else if (other.tag == "Bullet")// 맞은게 총알
+        else if (other.tag == "Bullet" && curHealth > 0)// 맞은게 총알
         {
             Bullet bullet = other.GetComponent<Bullet>();
             curHealth -= bullet.damage;
@@ -194,26 +189,29 @@ public class Enemy : MonoBehaviour
         Vector3 reactVec = transform.position - explosionPos;
         StartCoroutine(Ondamage(reactVec,true));
     }
+
     IEnumerator Ondamage(Vector3 reactVec , bool isGrenade)
     {
         foreach ( MeshRenderer mesh in meshs)
-             mesh.material.color =Color.red;
+             mesh.material.color = Color.red;
    
-        yield return new WaitForSeconds(0.1f);
-
+    
         if (curHealth > 0)
         {
+            yield return new WaitForSeconds(0.1f);
             foreach (MeshRenderer mesh in meshs)
-                mesh.material.color = Color.white;
+                mesh.material.color = Color.white; 
         }
         else // 사망시 액션
         {
             foreach (MeshRenderer mesh in meshs)
                 mesh.material.color = Color.gray;
+            
             gameObject.layer = 14;
             isDead = true;
             isChase = false;
             nav.enabled = false;
+            
             anim.SetTrigger("doDie");
             Player player = target.GetComponent<Player>();
             player.score += score;
