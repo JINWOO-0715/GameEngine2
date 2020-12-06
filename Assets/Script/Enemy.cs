@@ -257,7 +257,7 @@ public class Enemy : MonoBehaviour
     
             // if(enemyType != Type.D) // 보스아니면 모두 제거 보스 추가시 이걸 제거하시오
                  
-            Destroy(gameObject, 4);
+            Destroy(gameObject, 3);
         }
     }
 }
