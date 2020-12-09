@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &6379102234160956386
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678927452832457243}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eceba697365c11c41a62a18e0bebd446, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6379102233946392536
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,25 +79,6 @@ MonoBehaviour:
   damage: 10
   isMelee: 1
   isRock: 0
---- !u!95 &6379102234160956386
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1678927452832457243}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: eceba697365c11c41a62a18e0bebd446, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6632009067634646601
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,6 +159,7 @@ MonoBehaviour:
   maxHealth: 50
   curHealth: 50
   score: 100
+  manager: {fileID: 0}
   target: {fileID: 0}
   meleeArea: {fileID: 6379102233946392533}
   bullet: {fileID: 0}
@@ -169,6 +170,7 @@ MonoBehaviour:
   isChase: 0
   isAttack: 0
   isDead: 0
+  hitedsound: {fileID: 2060067479215577132, guid: 65ffa48e6dd20904593b5dd7037834b1, type: 3}
   enemyType: 0
   rigid: {fileID: 0}
   boxCollider: {fileID: 0}

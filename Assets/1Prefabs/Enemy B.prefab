@@ -91,6 +91,7 @@ MonoBehaviour:
   isChase: 0
   isAttack: 0
   isDead: 0
+  hitedsound: {fileID: 2060067479215577132, guid: 65ffa48e6dd20904593b5dd7037834b1, type: 3}
   enemyType: 1
   rigid: {fileID: 0}
   boxCollider: {fileID: 0}

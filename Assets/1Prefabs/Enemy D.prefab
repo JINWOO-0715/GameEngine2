@@ -104,6 +104,7 @@ MonoBehaviour:
   maxHealth: 100
   curHealth: 100
   score: 1000
+  manager: {fileID: 0}
   target: {fileID: 0}
   meleeArea: {fileID: 8615238456355049935}
   bullet: {fileID: 5872992162504777033, guid: 17aa6e89d4bf0184ead382b5964ca0c1, type: 3}
@@ -114,6 +115,7 @@ MonoBehaviour:
   isChase: 0
   isAttack: 0
   isDead: 0
+  hitedsound: {fileID: 2060067479215577132, guid: 65ffa48e6dd20904593b5dd7037834b1, type: 3}
   enemyType: 3
   rigid: {fileID: 0}
   boxCollider: {fileID: 0}
@@ -124,6 +126,25 @@ MonoBehaviour:
   missilePortA: {fileID: 8615238457816277125}
   missilePortB: {fileID: 8615238457308064891}
   isLook: 0
+--- !u!95 &8615238458130236044
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4887222948035446131}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 95abef28b1b482a4eb120539d276d550, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8615238456355049929
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,25 +265,6 @@ Transform:
   m_Father: {fileID: 662221047516227505}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &8615238458130236044
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4887222948035446131}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 95abef28b1b482a4eb120539d276d550, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5698054845752637474
 PrefabInstance:
   m_ObjectHideFlags: 0

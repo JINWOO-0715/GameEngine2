@@ -18,6 +18,9 @@ public class Enemy : MonoBehaviour
     public bool isAttack;
     public bool isDead;
 
+    public AudioSource hitedsound;
+
+
     public enum Type
     {
         A,
@@ -170,7 +173,7 @@ public class Enemy : MonoBehaviour
             curHealth -= weapon.damage;
             Vector3 reactVec = transform.position - other.transform.position;
             StartCoroutine(Ondamage(reactVec ,false));
-          
+        
 
         }
         else if (other.tag == "Bullet" && curHealth > 0)// 맞은게 총알
@@ -180,6 +183,7 @@ public class Enemy : MonoBehaviour
             Vector3 reactVec = transform.position - other.transform.position;
             Destroy(other.gameObject); 
             StartCoroutine(Ondamage(reactVec,false));
+        
         }
     }
 
@@ -191,7 +195,8 @@ public class Enemy : MonoBehaviour
     }
 
     IEnumerator Ondamage(Vector3 reactVec , bool isGrenade)
-    {
+    {    
+        hitedsound.Play();
         foreach ( MeshRenderer mesh in meshs)
              mesh.material.color = Color.red;
    

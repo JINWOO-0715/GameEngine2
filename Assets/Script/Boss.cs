@@ -12,6 +12,7 @@ public class Boss : Enemy
     public Transform missilePortB;
     public bool isLook;
     
+
     Vector3 lookVec;
     Vector3 tauntVec;
 

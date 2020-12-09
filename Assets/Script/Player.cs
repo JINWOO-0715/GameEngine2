@@ -14,7 +14,9 @@ public class Player : MonoBehaviour
     public GameObject grenadeObj;
     public Camera followCamera;
     public GameManager manager;
-    
+    public AudioSource shotSound;
+    public AudioSource reloadSound;
+
     
     public int ammo;
     public int coin;
@@ -122,6 +124,7 @@ public class Player : MonoBehaviour
         // 움직이는 동안 리로드 불가
         if(isReload)
             moveVec = Vector3.zero;
+        
 
 
         if(!isBorder && !isDead)
@@ -202,12 +205,17 @@ public class Player : MonoBehaviour
         if(fDown && isFireReady && !isDodge && !isSwap && !isReload && !isShop&& !isDead) {
             equipWeapon.Use();
             anim.SetTrigger(equipWeapon.type == Weapon.Type.Melee ? "doSwing" : "doShot");
+            if (equipWeapon.type == Weapon.Type.Range)
+            {
+                shotSound.Play();
+            }
             fireDelay = 0;
         }
     }
 
     void Reload()
     {
+        reloadSound.Play();
         if(equipWeapon == null)
             return;
         

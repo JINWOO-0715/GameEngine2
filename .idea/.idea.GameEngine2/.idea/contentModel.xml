@@ -17,9 +17,6 @@
             </e>
           </e>
         </e>
-        <e p="QuadAcion Pack" t="Include">
-          <e p="License.txt" t="Include" />
-        </e>
         <e p="Script" t="Include">
           <e p="Boss.cs" t="Include" />
           <e p="BossMissile.cs" t="Include" />

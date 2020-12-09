@@ -67,6 +67,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 82
       Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 91
@@ -234,7 +236,7 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: b093f88712c58c2dae1f247b7f3cdc0d
+      Hash: 1d9ae1b7d07c4d78f7c7eb24c329db55
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -294,7 +296,7 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 1d91b4f1ff5ace28fc3ec1e8abf6fba5
+      Hash: 8ffd172cb3e2214eac7f9c1bc1b440a8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -396,7 +398,7 @@ ScriptsOnlyBuild:
     className: Grenade
   - hash:
       serializedVersion: 2
-      Hash: ba7d1fb9cf2a61b13f276671ec20b668
+      Hash: 535b7c59b6d21a820add2d109a72c48f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Boss
@@ -522,7 +524,7 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 636ff235d79cde2131874e1fc06973c7
+      Hash: a2ee9c75bbdd994914781ba11065332e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Enemy

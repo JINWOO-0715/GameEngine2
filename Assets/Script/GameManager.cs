@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Schema;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -47,18 +50,26 @@ public class GameManager : MonoBehaviour
     public Text curScoreText;
     public Text BestText;
     public GameObject menuSet;
+    
+    public AudioSource bgm1;
+    public AudioSource bgm2;
 
+
+    
     void Awake()
-    {
+    { 
+        bgm1.Play();
         enemyList = new List<int>();
         maxScoreTxt.text = string.Format("{0:n0}", PlayerPrefs.GetInt("MaxScore"));
 
-        if(PlayerPrefs.HasKey("MaxScore"))
+        if (PlayerPrefs.HasKey("MaxScore"))
             PlayerPrefs.SetInt("MaxScore", 0);
     }
 
     public void GameStart()
-    {
+    { 
+      
+       
         menuCam.SetActive(false);
         gameCam.SetActive(true);
 
@@ -66,6 +77,7 @@ public class GameManager : MonoBehaviour
         gamePanel.SetActive(true);
 
         player.gameObject.SetActive(true);
+
     }
 
     public void GameOver()
@@ -75,7 +87,7 @@ public class GameManager : MonoBehaviour
         curScoreText.text = scoreTxt.text;
 
         int maxScore = PlayerPrefs.GetInt("MaxScore");
-        if(player.score > maxScore)
+        if (player.score > maxScore)
         {
             BestText.gameObject.SetActive(true);
             PlayerPrefs.SetInt("MaxScore", player.score);
@@ -84,13 +96,15 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        bgm2.Stop();
+        bgm1.Play();
         SceneManager.LoadScene(0);
     }
 
 
     void Update()
     {
-        if(isBattle)
+        if (isBattle)
             playTime += Time.deltaTime;
         if (Input.GetButtonDown("Cancel"))
         {
@@ -101,9 +115,50 @@ public class GameManager : MonoBehaviour
             else
             {
                 menuSet.SetActive(true);
-            }  
+            }
         }
 
+    }
+
+    public void GameSave()
+    {
+        PlayerPrefs.SetInt("Coin",player.coin);
+        PlayerPrefs.SetInt("Ammo",player.ammo);
+        PlayerPrefs.SetInt("Health",player.health);
+        PlayerPrefs.SetInt("Score",player.score);
+        PlayerPrefs.SetInt("Stage", stage);
+        int a =Convert.ToInt32(player.hasWeapons[0]);
+        int b =Convert.ToInt32(player.hasWeapons[1]);
+        int c =Convert.ToInt32(player.hasWeapons[2]);
+        PlayerPrefs.SetInt("HasGrenades", player.hasGrenades);
+
+        PlayerPrefs.SetInt("hasWeapons1",a);
+        PlayerPrefs.SetInt("hasWeapons2",b);
+        PlayerPrefs.SetInt("hasWeapons3",c);
+        menuSet.SetActive(false);
+
+    }
+
+    public void GameLoad()
+    {
+       int a= PlayerPrefs.GetInt("Coin");
+       int b= PlayerPrefs.GetInt("Ammo");
+       int c=PlayerPrefs.GetInt("Health");
+       int d=PlayerPrefs.GetInt("Score");
+       int e= PlayerPrefs.GetInt("hasWeapons1");
+       int f= PlayerPrefs.GetInt("hasWeapons2");
+       int g= PlayerPrefs.GetInt("hasWeapons3");
+       int i=PlayerPrefs.GetInt("HasGrenades");
+
+       stage =  PlayerPrefs.GetInt("Stage");
+       player.coin = a;
+       player.ammo = b;
+       player.health = c;
+       player.score = d;
+       player.hasWeapons[0] = Convert.ToBoolean(e);;
+       player.hasWeapons[1] = Convert.ToBoolean(f);;
+       player.hasWeapons[2] = Convert.ToBoolean(g);;
+       player.hasGrenades = i;
     }
 
     public void GameExit()
@@ -112,6 +167,8 @@ public class GameManager : MonoBehaviour
     }
     public void StageStart()
     {
+ 
+       
         itemShop.SetActive(false);
         weaponShop.SetActive(false);
         startZone.SetActive(false);
@@ -124,7 +181,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void StageEnd()
-    {
+    {      
+       bgm2.Stop();
+       bgm1.Play();
         player.transform.position = Vector3.up * 1.18f;
 
         itemShop.SetActive(true);
@@ -141,6 +200,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator InBattle()
     {
+        bgm1.Stop();
+        bgm2.loop = true;
+        bgm2.Play();
+        
         if(stage % 5 == 0)
         {
             enemyCntD++;
