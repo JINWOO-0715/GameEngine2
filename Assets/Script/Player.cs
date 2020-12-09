@@ -215,7 +215,7 @@ public class Player : MonoBehaviour
 
     void Reload()
     {
-        reloadSound.Play();
+        
         if(equipWeapon == null)
             return;
         
@@ -225,7 +225,9 @@ public class Player : MonoBehaviour
         if(ammo == 0)
             return;
         
-        if(rDwon && !isJump && !isDodge && !isSwap && isFireReady && !isShop&& !isDead) {
+        if(rDwon && !isJump && !isDodge && !isSwap && isFireReady && !isShop&& !isDead) 
+        {
+            reloadSound.Play();
             anim.SetTrigger("doReload");
             isReload = true;
 
