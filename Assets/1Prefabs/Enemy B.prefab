@@ -102,8 +102,9 @@ MonoBehaviour:
   maxHealth: 80
   curHealth: 80
   score: 200
+  manager: {fileID: 0}
   target: {fileID: 0}
-  meleeArea: {fileID: 0}
+  meleeArea: {fileID: 5142052233049012232}
   bullet: {fileID: 0}
   coins:
   - {fileID: 2468025321457972204, guid: 3d9cf396ca5123648aa0d2522ef98c0b, type: 3}
