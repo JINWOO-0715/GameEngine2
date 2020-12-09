@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     public RectTransform bossHealthBar;
     public Text curScoreText;
     public Text BestText;
+    public GameObject menuSet;
 
     void Awake()
     {
@@ -91,8 +92,24 @@ public class GameManager : MonoBehaviour
     {
         if(isBattle)
             playTime += Time.deltaTime;
+        if (Input.GetButtonDown("Cancel"))
+        {
+            if (menuSet.activeSelf)
+            {
+                menuSet.SetActive(false);
+            }
+            else
+            {
+                menuSet.SetActive(true);
+            }  
+        }
+
     }
 
+    public void GameExit()
+    {
+        Application.Quit();
+    }
     public void StageStart()
     {
         itemShop.SetActive(false);

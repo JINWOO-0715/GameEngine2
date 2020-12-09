@@ -17,14 +17,13 @@ ScriptsOnlyBuild:
     - StartZone
     - Weapon
     Unity.Rider.Editor.dll:
+    - Packages.Rider.Editor.RiderScriptEditorData
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -83,49 +82,49 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11722}
+      Script: {instanceID: 11726}
     - Class: 114
-      Script: {instanceID: 11900}
+      Script: {instanceID: 11904}
     - Class: 114
-      Script: {instanceID: 11932}
+      Script: {instanceID: 11936}
     - Class: 114
-      Script: {instanceID: 11942}
+      Script: {instanceID: 11946}
     - Class: 114
-      Script: {instanceID: 11992}
+      Script: {instanceID: 11996}
     - Class: 114
-      Script: {instanceID: 12118}
-    - Class: 114
-      Script: {instanceID: 12378}
+      Script: {instanceID: 12122}
     - Class: 114
       Script: {instanceID: 12382}
     - Class: 114
-      Script: {instanceID: 12430}
+      Script: {instanceID: 12386}
     - Class: 114
-      Script: {instanceID: 12460}
+      Script: {instanceID: 12434}
     - Class: 114
-      Script: {instanceID: 12476}
+      Script: {instanceID: 12464}
     - Class: 114
-      Script: {instanceID: 12562}
+      Script: {instanceID: 12480}
     - Class: 114
-      Script: {instanceID: 12608}
+      Script: {instanceID: 12566}
     - Class: 114
-      Script: {instanceID: 12636}
+      Script: {instanceID: 12612}
     - Class: 114
-      Script: {instanceID: 12666}
+      Script: {instanceID: 12640}
     - Class: 114
-      Script: {instanceID: 12788}
+      Script: {instanceID: 12670}
     - Class: 114
-      Script: {instanceID: 12856}
+      Script: {instanceID: 12770}
     - Class: 114
-      Script: {instanceID: 13182}
+      Script: {instanceID: 12794}
     - Class: 114
-      Script: {instanceID: 13392}
+      Script: {instanceID: 12862}
     - Class: 114
-      Script: {instanceID: 13400}
+      Script: {instanceID: 13188}
     - Class: 114
-      Script: {instanceID: 13776}
+      Script: {instanceID: 13398}
     - Class: 114
-      Script: {instanceID: 17710}
+      Script: {instanceID: 13406}
+    - Class: 114
+      Script: {instanceID: 13782}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -235,7 +234,7 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 2487dd9a5f4f332103cfe5f097bba0b5
+      Hash: b093f88712c58c2dae1f247b7f3cdc0d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -437,6 +436,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: cbeee4357632bb72c3c33d491da28e67
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StartZone
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -665,13 +670,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: cbeee4357632bb72c3c33d491da28e67
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: StartZone
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: "C:/Users/jangd/OneDrive/\uBC14\uD0D5 \uD654\uBA74/SpaceFight.exe"
+  playerPath: C:/Users/user/Desktop/SpaceFight.exe
