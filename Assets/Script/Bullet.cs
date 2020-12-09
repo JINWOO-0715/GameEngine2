@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     {
         if(!isRock && collision.gameObject.tag == "Floor")
         {
-            Destroy(gameObject, 3);
+            Destroy(gameObject, 2);
         }
 
     }
@@ -23,6 +23,7 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
 

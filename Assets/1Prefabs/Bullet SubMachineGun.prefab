@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1042287259715582122}
   - component: {fileID: 582428344285346995}
   - component: {fileID: 8171161482612391165}
+  - component: {fileID: -6835927507881945886}
   m_Layer: 10
   m_Name: Bullet SubMachineGun
   m_TagString: Bullet
@@ -183,3 +184,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 7
+  isMelee: 0
+  isRock: 0
+--- !u!114 &-6835927507881945886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335217954965556616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565c551792d72a54793897dc7b714931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  isMelee: 0
+  isRock: 0
